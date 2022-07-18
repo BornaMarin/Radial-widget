@@ -46,7 +46,7 @@ function App() {
             aria-label="Arc length"
             max={Math.PI}
             min={Math.PI / 2}
-            step={0.1}
+            step={0.01}
             defaultValue={Math.PI * 0.75}
             valueLabelDisplay="auto"
             onChange={changeArcLength}
