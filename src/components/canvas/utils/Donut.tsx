@@ -77,7 +77,7 @@ export default function DonutCanvas(props: DonutProps) {
 
   useEffect(() => {
     setDonut(new Donut(props));
-  }, [props.startAngle, props.rotationFactor]);
+  }, [props.startAngle, props.rotationFactor, props.endAngle]);
   return (
     <CanvasProvider draw={donut.draw}>
       <Canvas zIndex={props.zIndex} />
