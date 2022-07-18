@@ -1,4 +1,6 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useRef } from 'react';
+
+//  canvasRef: HTMLCanvasElement
 const CanvasContext = React.createContext({});
 
 interface CanvasChildren {
