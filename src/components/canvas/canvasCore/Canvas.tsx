@@ -12,9 +12,11 @@ import CSS from 'csstype';
 //   height: string;
 // }
 
-function Canvas() {
-  console.log(2);
+interface CanvasProps {
+  zIndex: number;
+}
 
+function Canvas(props: CanvasProps) {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const { canvasRef, prepareCanvas, drawElement } = useCanvas();
@@ -25,7 +27,7 @@ function Canvas() {
   });
 
   const canvasStyle: CSS.Properties = {
-    zIndex: 1,
+    zIndex: props.zIndex,
     position: 'absolute',
     display: 'block',
     objectFit: 'contain',

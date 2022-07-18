@@ -8,6 +8,7 @@ interface DonutType {
   startAngle: number;
   endAngle: number;
   arcRadius: number;
+  rotationFactor: number;
   color: string;
 }
 
@@ -17,7 +18,9 @@ interface DonutProps {
   startAngle: number;
   endAngle: number;
   arcRadius: number;
+  rotationFactor: number;
   color: string;
+  zIndex: number;
 }
 
 class Donut implements DonutType {
@@ -26,6 +29,7 @@ class Donut implements DonutType {
   startAngle;
   endAngle;
   arcRadius;
+  rotationFactor;
   color;
   constructor(props: DonutProps) {
     this.xAxisStartingPoint = props.xAxisStartingPoint;
@@ -34,44 +38,49 @@ class Donut implements DonutType {
     this.endAngle = props.endAngle;
     this.arcRadius = props.arcRadius;
     this.color = props.color;
+    this.rotationFactor = props.rotationFactor;
     this.draw = this.draw.bind(this);
   }
   draw(ctx: CanvasRenderingContext2D): void {
     ctx.clearRect(0, 0, 500, 500);
-    console.log(this);
-
     ctx.beginPath();
-    ctx.arc(
+    ctx.arc(this.xAxisStartingPoint, this.yAxisStartingPoint, this.arcRadius, 0, Math.PI * 2);
+    fillGap(
       this.xAxisStartingPoint,
       this.yAxisStartingPoint,
       this.arcRadius,
-      this.startAngle,
-      this.endAngle
+      this.rotationFactor + this.startAngle,
+      this.rotationFactor + this.endAngle,
+      this.color
     );
-    ctx.fillStyle = this.color;
-    ctx.fill();
+
+    function fillGap(
+      cx: number,
+      cy: number,
+      radius: number,
+      startAngle: number,
+      endAngle: number,
+      fillcolor: string
+    ) {
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.arc(cx, cy, radius, startAngle, endAngle);
+      ctx.closePath();
+      ctx.fillStyle = fillcolor;
+      ctx.fill();
+    }
   }
 }
 
 export default function DonutCanvas(props: DonutProps) {
-  console.log(1);
-  const [donut, setDonut] = useState(
-    new Donut({
-      xAxisStartingPoint: 250,
-      yAxisStartingPoint: 250,
-      startAngle: 0,
-      endAngle: Math.PI * 2,
-      arcRadius: 30,
-      color: 'black'
-    })
-  );
+  const [donut, setDonut] = useState(new Donut(props));
 
-  // useEffect(() => {
-  //   setDonut(new Donut(props));
-  // });
+  useEffect(() => {
+    setDonut(new Donut(props));
+  }, [props.startAngle, props.rotationFactor]);
   return (
     <CanvasProvider draw={donut.draw}>
-      <Canvas />
+      <Canvas zIndex={props.zIndex} />
     </CanvasProvider>
   );
 }
