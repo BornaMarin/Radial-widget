@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { useCanvas } from './canvasContext';
+import { useCanvas } from './CanvasContext';
 import CSS from 'csstype';
 
 // interface CanvasStyle {
@@ -13,22 +13,23 @@ import CSS from 'csstype';
 // }
 
 function Canvas() {
+  console.log(2);
+
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  const { canvasRef, prepareCanvas } = useCanvas();
+  const { canvasRef, prepareCanvas, drawElement } = useCanvas();
 
   useEffect(() => {
     prepareCanvas();
+    drawElement();
   });
 
   const canvasStyle: CSS.Properties = {
     zIndex: 1,
     position: 'absolute',
-    border: '1px solid red',
     display: 'block',
     objectFit: 'contain',
-    width: '500px',
-    height: '500px'
+    border: '1px solid'
   };
   return (
     <>
