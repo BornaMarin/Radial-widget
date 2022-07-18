@@ -7,7 +7,7 @@ function App() {
   const [rotationFactor, setRotationFactor] = useState(0);
   const [arcValue, setArcValue] = useState(0);
   const [bodyRadius, setBodyRadius] = useState(50);
-  const [sunburstRatio, setSunburstRatio] = useState(70);
+  const [sunburstRatio, setSunburstRatio] = useState(40);
 
   const changeArcLength = (event: any) => {
     setArcLength(event.target.value);
@@ -22,7 +22,7 @@ function App() {
     setBodyRadius(event.target.value);
   };
   const changeSunburstRatio = (event: any) => {
-    setTimeout(() => setSunburstRatio(event.target.value), 1000);
+    setSunburstRatio(event.target.value);
   };
   return (
     <div className="App">

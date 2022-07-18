@@ -26,7 +26,7 @@ class Sunburst implements SunburstType {
   }
   draw(ctx: CanvasRenderingContext2D): void {
     let prev = null;
-    for (let i = 1; i <= 120; i++) {
+    for (let i = 1; i <= this.numberOfTicksRation * 2; i++) {
       ctx.fillStyle = 'white';
       ctx.beginPath();
       ctx.moveTo(250, 250);
