@@ -24,7 +24,7 @@ class Circle implements CircleType {
   }
 }
 
-export default function DonutCanvas(props: CircleType) {
+export default function CircleCanvas(props: CircleType) {
   const [circle, setCircle] = useState(new Circle(props));
 
   useEffect(() => {

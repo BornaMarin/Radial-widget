@@ -7,6 +7,7 @@ function App() {
   const [rotationFactor, setRotationFactor] = useState(0);
   const [arcValue, setArcValue] = useState(0);
   const [bodyRadius, setBodyRadius] = useState(50);
+  const [sunburstRatio, setSunburstRatio] = useState(70);
 
   const changeArcLength = (event: any) => {
     setArcLength(event.target.value);
@@ -20,6 +21,9 @@ function App() {
   const changeBodyRadius = (event: any) => {
     setBodyRadius(event.target.value);
   };
+  const changeSunburstRatio = (event: any) => {
+    setTimeout(() => setSunburstRatio(event.target.value), 1000);
+  };
   return (
     <div className="App">
       <RadialWidget
@@ -27,6 +31,7 @@ function App() {
         arcLength={arcLength}
         rotationFactor={rotationFactor}
         value={arcValue}
+        sunburstRatio={sunburstRatio}
       />
       <div
         style={{
@@ -75,6 +80,16 @@ function App() {
             defaultValue={40}
             valueLabelDisplay="auto"
             onChange={changeBodyRadius}
+          />
+          <Typography gutterBottom>Sunburst ratio</Typography>
+          <Slider
+            aria-label="Sunburst ratio"
+            max={180}
+            min={0}
+            step={30}
+            defaultValue={90}
+            valueLabelDisplay="auto"
+            onChange={changeSunburstRatio}
           />
         </div>
       </div>
