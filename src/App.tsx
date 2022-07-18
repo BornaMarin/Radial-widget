@@ -85,8 +85,8 @@ function App() {
           <Slider
             aria-label="Sunburst ratio"
             max={180}
-            min={0}
-            step={30}
+            min={6}
+            step={2}
             defaultValue={90}
             valueLabelDisplay="auto"
             onChange={changeSunburstRatio}
