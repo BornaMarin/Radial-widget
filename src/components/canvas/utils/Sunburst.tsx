@@ -25,6 +25,8 @@ class Sunburst implements SunburstType {
     this.draw = this.draw.bind(this);
   }
   draw(ctx: CanvasRenderingContext2D): void {
+    ctx.clearRect(0, 0, 500, 500);
+
     let prev = null;
     for (let i = 1; i <= this.numberOfTicksRation * 2; i++) {
       ctx.fillStyle = 'white';
