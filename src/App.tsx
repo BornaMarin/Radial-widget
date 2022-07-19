@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import './App.css';
 import RadialWidget from './components/canvas/widgets/RadialWidget';
 import { Slider, Typography } from '@mui/material';
+import { TwitterPicker } from 'react-color';
 function App() {
   const [arcLength, setArcLength] = useState(Math.PI * 0.75);
   const [rotationFactor, setRotationFactor] = useState(0);
   const [arcValue, setArcValue] = useState(0);
   const [bodyRadius, setBodyRadius] = useState(50);
   const [sunburstRatio, setSunburstRatio] = useState(40);
+  const [defaultTickColor, setDefaultTickColor] = useState('#ABB8C3');
+  const [progressColor, setProgressColor] = useState('#ff6900');
 
   const changeArcLength = (event: any) => {
     setArcLength(event.target.value);
@@ -24,6 +27,14 @@ function App() {
   const changeSunburstRatio = (event: any) => {
     setSunburstRatio(event.target.value);
   };
+  const changeDefaultTickColor = (event: any) => {
+    console.log(event.hex);
+    setDefaultTickColor(event.hex);
+  };
+  const changeProgressColor = (event: any) => {
+    setProgressColor(event.hex);
+  };
+
   return (
     <div className="App">
       <RadialWidget
@@ -34,6 +45,8 @@ function App() {
         sunburstRatio={sunburstRatio}
         xAxisStartingPoint={250}
         yAxisStartingPoint={250}
+        defaultTickColor={defaultTickColor}
+        progressColor={progressColor}
       />
       <div
         style={{
@@ -93,6 +106,10 @@ function App() {
             valueLabelDisplay="auto"
             onChange={changeSunburstRatio}
           />
+          <Typography gutterBottom>Default tick color</Typography>
+          <TwitterPicker color={defaultTickColor} onChange={changeDefaultTickColor} />
+          <Typography gutterBottom>Progress color</Typography>
+          <TwitterPicker color={progressColor} onChange={changeProgressColor} />
         </div>
       </div>
     </div>
