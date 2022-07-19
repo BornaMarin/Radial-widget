@@ -32,6 +32,8 @@ function App() {
         rotationFactor={rotationFactor}
         value={arcValue}
         sunburstRatio={sunburstRatio}
+        xAxisStartingPoint={250}
+        yAxisStartingPoint={250}
       />
       <div
         style={{

@@ -5,6 +5,8 @@ import Canvas from '../canvasCore/Canvas';
 interface SunburstType {
   numberOfTicksRation: number;
   zIndex: number;
+  xAxisStartingPoint: number;
+  yAxisStartingPoint: number;
 }
 
 function isOdd(num: number): number {
@@ -19,9 +21,13 @@ function lineToAngle(x: number, y: number, length: number, angle: number) {
 class Sunburst implements SunburstType {
   numberOfTicksRation;
   zIndex;
+  xAxisStartingPoint;
+  yAxisStartingPoint;
   constructor(props: SunburstType) {
     this.numberOfTicksRation = props.numberOfTicksRation;
     this.zIndex = props.zIndex;
+    this.xAxisStartingPoint = props.xAxisStartingPoint;
+    this.yAxisStartingPoint = props.yAxisStartingPoint;
     this.draw = this.draw.bind(this);
   }
   draw(ctx: CanvasRenderingContext2D): void {
@@ -31,14 +37,14 @@ class Sunburst implements SunburstType {
     for (let i = 1; i <= this.numberOfTicksRation * 2; i++) {
       ctx.fillStyle = 'white';
       ctx.beginPath();
-      ctx.moveTo(250, 250);
+      ctx.moveTo(this.xAxisStartingPoint, this.yAxisStartingPoint);
       const pos = lineToAngle(
-        250,
-        250,
+        this.xAxisStartingPoint,
+        this.yAxisStartingPoint,
         105,
         (i * Math.PI) / this.numberOfTicksRation + (Math.PI / this.numberOfTicksRation) * 2
       );
-      ctx.moveTo(250, 250);
+      ctx.moveTo(this.xAxisStartingPoint, this.yAxisStartingPoint);
       ctx.lineTo(pos.x, pos.y);
       if (prev && !isOdd(i)) {
         ctx.lineTo(prev.x, prev.y);
