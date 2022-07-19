@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { CanvasProvider } from '../canvasCore/CanvasContext';
 import Canvas from '../canvasCore/Canvas';
+import { IDrawable } from '../../../types/drawable.interface';
 
 interface SunburstType {
   numberOfTicksRation: number;
@@ -8,17 +9,18 @@ interface SunburstType {
   xAxisStartingPoint: number;
   yAxisStartingPoint: number;
 }
-
+//overkill
 function isOdd(num: number): number {
   return num % 2;
 }
+//class Line, metoda drawAngle
 function lineToAngle(x: number, y: number, length: number, angle: number) {
   return {
     x: x + length * Math.cos(angle),
     y: y + length * Math.sin(angle)
   };
 }
-class Sunburst implements SunburstType {
+class Sunburst implements SunburstType, IDrawable {
   numberOfTicksRation;
   zIndex;
   xAxisStartingPoint;
@@ -28,20 +30,18 @@ class Sunburst implements SunburstType {
     this.zIndex = props.zIndex;
     this.xAxisStartingPoint = props.xAxisStartingPoint;
     this.yAxisStartingPoint = props.yAxisStartingPoint;
-    this.draw = this.draw.bind(this);
   }
   draw(ctx: CanvasRenderingContext2D): void {
     ctx.clearRect(0, 0, 500, 500);
-
+    ctx.fillStyle = 'white';
     let prev = null;
     for (let i = 1; i <= this.numberOfTicksRation * 2; i++) {
-      ctx.fillStyle = 'white';
       ctx.beginPath();
       ctx.moveTo(this.xAxisStartingPoint, this.yAxisStartingPoint);
       const pos = lineToAngle(
         this.xAxisStartingPoint,
         this.yAxisStartingPoint,
-        105,
+        102,
         (i * Math.PI) / this.numberOfTicksRation + (Math.PI / this.numberOfTicksRation) * 2
       );
       ctx.moveTo(this.xAxisStartingPoint, this.yAxisStartingPoint);
@@ -49,7 +49,7 @@ class Sunburst implements SunburstType {
       if (prev && !isOdd(i)) {
         ctx.lineTo(prev.x, prev.y);
       }
-      prev = { x: pos.x, y: pos.y };
+      prev = pos;
       ctx.fill();
     }
   }
@@ -62,7 +62,7 @@ export default function SunburstCanvas(props: SunburstType) {
     setSunburst(new Sunburst(props));
   }, [props.numberOfTicksRation]);
   return (
-    <CanvasProvider draw={sunburst.draw}>
+    <CanvasProvider drawable={sunburst}>
       <Canvas zIndex={props.zIndex} />
     </CanvasProvider>
   );

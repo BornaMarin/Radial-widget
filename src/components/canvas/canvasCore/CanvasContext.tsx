@@ -1,11 +1,17 @@
 import React, { useContext, useRef } from 'react';
+import { IDrawable } from '../../../types/drawable.interface';
 
+interface ICanvasContext {
+  canvasRef: React.RefObject<HTMLCanvasElement>;
+  prepareCanvas: () => void;
+  drawElement: () => void;
+}
 //  canvasRef: HTMLCanvasElement
-const CanvasContext = React.createContext({});
+const CanvasContext = React.createContext({} as ICanvasContext);
 
 interface CanvasChildren {
   children: JSX.Element[] | JSX.Element;
-  draw: (ctx: CanvasRenderingContext2D) => void;
+  drawable: IDrawable;
 }
 
 export const CanvasProvider = (props: CanvasChildren): JSX.Element => {
@@ -33,7 +39,7 @@ export const CanvasProvider = (props: CanvasChildren): JSX.Element => {
 
   const drawElement = () => {
     if (context) {
-      props.draw(context);
+      props.drawable.draw(context);
     }
   };
   return (

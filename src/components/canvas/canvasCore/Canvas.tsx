@@ -17,8 +17,6 @@ interface CanvasProps {
 }
 
 function Canvas(props: CanvasProps) {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   const { canvasRef, prepareCanvas, drawElement } = useCanvas();
 
   useEffect(() => {
