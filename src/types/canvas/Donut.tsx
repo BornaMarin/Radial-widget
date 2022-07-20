@@ -1,6 +1,6 @@
 import { Circle } from './Circle';
-import { IDrawable } from '../../interfaces/drawable.interface';
-import { IDonut } from '../../interfaces/donut.interface';
+import { IDrawable } from '../interfaces/drawable.interface';
+import { IDonut } from '../interfaces/donut.interface';
 
 export class Donut extends Circle implements IDonut, IDrawable {
   startAngle;

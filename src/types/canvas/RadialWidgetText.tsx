@@ -1,4 +1,4 @@
-import { IRadialWidgetText } from '../../interfaces/radialWidgetText.interface';
+import { IRadialWidgetText } from '../interfaces/radialWidgetText.interface';
 
 export class RadialWidgetText implements IRadialWidgetText {
   arcRadius;
@@ -19,7 +19,6 @@ export class RadialWidgetText implements IRadialWidgetText {
   }
   draw(ctx: CanvasRenderingContext2D): void {
     ctx.clearRect(0, 0, this.xAxisStartingPoint * 2, this.xAxisStartingPoint * 2);
-
     ctx.beginPath();
     ctx.fillStyle = 'black';
     ctx.textAlign = 'center';

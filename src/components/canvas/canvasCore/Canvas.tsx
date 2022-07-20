@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { forwardRef, useEffect, useImperativeHandle } from 'react';
 import { useCanvas } from './CanvasContext';
 import CSS from 'csstype';
 
@@ -8,13 +8,22 @@ interface CanvasProps {
   yAxisStartingPoint: number;
 }
 
-function Canvas(props: CanvasProps) {
+// eslint-disable-next-line react/display-name
+const Canvas = forwardRef((props: CanvasProps, ref) => {
   const { canvasRef, prepareCanvas, drawElement } = useCanvas();
 
-  useEffect(() => {
-    prepareCanvas();
-    drawElement();
-  });
+  // useEffect(() => {
+  //   console.log('canvas bla');
+  //   prepareCanvas();
+  //   drawElement();
+  // });
+
+  useImperativeHandle(ref, () => ({
+    draw() {
+      prepareCanvas();
+      drawElement();
+    }
+  }));
 
   const canvasStyle: CSS.Properties = {
     zIndex: props.zIndex,
@@ -33,5 +42,5 @@ function Canvas(props: CanvasProps) {
       />
     </>
   );
-}
+});
 export default Canvas;

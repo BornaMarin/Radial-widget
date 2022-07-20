@@ -14,10 +14,12 @@ interface CanvasChildren {
   drawable: IDrawable;
 }
 
+let canvas: HTMLCanvasElement | null = null;
+let context: CanvasRenderingContext2D | null = null;
+
 export const CanvasProvider = (props: CanvasChildren): JSX.Element => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  let canvas: HTMLCanvasElement | null = null;
-  let context: CanvasRenderingContext2D | null = null;
+
   const prepareCanvas = () => {
     if (canvasRef.current) {
       canvas = canvasRef.current;

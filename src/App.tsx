@@ -43,7 +43,6 @@ function App() {
     setSunburstRatio(event.target.value);
   };
   const changeDefaultTickColor = (event: any) => {
-    console.log(event.hex);
     setDefaultTickColor(event.hex);
   };
   const changeProgressColor = (event: any) => {

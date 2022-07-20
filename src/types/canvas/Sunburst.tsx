@@ -1,6 +1,6 @@
-import { ISunburst } from '../../interfaces/sunburst.interface';
-import { IDrawable } from '../../interfaces/drawable.interface';
-import { isOdd, lineToAngle } from '../../../helperFunctions/canvasHelper';
+import { ISunburst } from '../interfaces/sunburst.interface';
+import { IDrawable } from '../interfaces/drawable.interface';
+import { isOdd, lineToAngle } from '../../utils/canvasHelper';
 
 export class Sunburst implements ISunburst, IDrawable {
   numberOfTicksRation;
@@ -18,6 +18,8 @@ export class Sunburst implements ISunburst, IDrawable {
   draw(ctx: CanvasRenderingContext2D): void {
     ctx.clearRect(0, 0, this.xAxisStartingPoint * 2, this.xAxisStartingPoint * 2);
     ctx.fillStyle = 'white';
+    // ctx.lineWidth = 5;
+
     let prev = null;
     for (let i = 1; i <= this.numberOfTicksRation * 2; i++) {
       ctx.beginPath();
@@ -34,6 +36,9 @@ export class Sunburst implements ISunburst, IDrawable {
       if (prev && !isOdd(i)) {
         ctx.lineTo(prev.x, prev.y);
       }
+      // ctx.strokeStyle = 'white';
+      //
+      // ctx.stroke();
       prev = pos;
       ctx.fill();
     }

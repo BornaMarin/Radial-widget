@@ -1,5 +1,5 @@
-import { ICircle } from '../../interfaces/circle.interface';
-import { IDrawable } from '../../interfaces/drawable.interface';
+import { ICircle } from '../interfaces/circle.interface';
+import { IDrawable } from '../interfaces/drawable.interface';
 
 export class Circle implements ICircle, IDrawable {
   arcRadius;
