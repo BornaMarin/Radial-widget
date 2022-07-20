@@ -6,4 +6,7 @@ export interface IRadialWidgetText {
   value: number;
   minValue: number;
   maxValue: number;
+  startAngle: number;
+  endAngle: number;
+  rotationFactor: number;
 }

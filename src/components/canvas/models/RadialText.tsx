@@ -14,7 +14,7 @@ export default function RadialText(props: IRadialWidgetText) {
     setCircle(new RadialWidgetText(props));
     //todo check this.....
     setTimeout(() => ref?.current?.draw());
-  }, [props.value]);
+  }, [props]);
   return (
     <CanvasProvider drawable={circle}>
       <Canvas

@@ -10,7 +10,7 @@ function App() {
   const [arcLength, setArcLength] = useState(Math.PI * 0.75);
   const [arcRadius, setArcRadius] = useState(100);
   const [minValue, setMinValue] = useState(0);
-  const [maxValue, setmaxValue] = useState(Math.PI * 2);
+  const [maxValue, setmaxValue] = useState(9);
   const [rotationFactor, setRotationFactor] = useState(0);
   const [arcValue, setArcValue] = useState(0);
   const [bodyRadius, setBodyRadius] = useState(50);
