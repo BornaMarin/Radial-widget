@@ -9,4 +9,6 @@ export interface IRadialWidget {
   yAxisStartingPoint: number;
   defaultTickColor: string;
   progressColor: string;
+  minValue: number;
+  maxValue: number;
 }

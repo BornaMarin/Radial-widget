@@ -28,7 +28,7 @@ export class Circle implements ICircle, IDrawable {
     // ctx.fillText(this.value.toFixed(2) + '%', this.xAxisStartingPoint, this.yAxisStartingPoint);
   }
   protected drawBaseCircle(ctx: CanvasRenderingContext2D): void {
-    ctx.clearRect(0, 0, 500, 500);
+    ctx.clearRect(0, 0, this.xAxisStartingPoint * 2, this.xAxisStartingPoint * 2);
     ctx.beginPath();
     ctx.arc(this.xAxisStartingPoint, this.yAxisStartingPoint, this.arcRadius, 0, Math.PI * 2);
   }

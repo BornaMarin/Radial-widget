@@ -16,7 +16,7 @@ export class Sunburst implements ISunburst, IDrawable {
     this.arcRadius = props.arcRadius;
   }
   draw(ctx: CanvasRenderingContext2D): void {
-    ctx.clearRect(0, 0, 500, 500);
+    ctx.clearRect(0, 0, this.xAxisStartingPoint * 2, this.xAxisStartingPoint * 2);
     ctx.fillStyle = 'white';
     let prev = null;
     for (let i = 1; i <= this.numberOfTicksRation * 2; i++) {

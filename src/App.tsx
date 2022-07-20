@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import RadialWidget from './components/canvas/widgets/RadialWidget';
-import { Slider, Typography } from '@mui/material';
+import { Slider, Typography, TextField } from '@mui/material';
 import { TwitterPicker } from 'react-color';
 function App() {
   //centar je jedini hardcoded.. prema njemu se canvas siri, smanjuje
@@ -9,6 +9,8 @@ function App() {
 
   const [arcLength, setArcLength] = useState(Math.PI * 0.75);
   const [arcRadius, setArcRadius] = useState(100);
+  const [minValue, setMinValue] = useState(0);
+  const [maxValue, setmaxValue] = useState(Math.PI * 2);
   const [rotationFactor, setRotationFactor] = useState(0);
   const [arcValue, setArcValue] = useState(0);
   const [bodyRadius, setBodyRadius] = useState(50);
@@ -21,6 +23,12 @@ function App() {
   };
   const changeArcRadius = (event: any) => {
     setArcRadius(event.target.value);
+  };
+  const changeMinValue = (event: any) => {
+    setMinValue(event.target.value);
+  };
+  const changeMaxValue = (event: any) => {
+    setmaxValue(event.target.value);
   };
   const rotateArc = (event: any) => {
     setRotationFactor(event.target.value);
@@ -56,6 +64,8 @@ function App() {
         yAxisStartingPoint={center}
         defaultTickColor={defaultTickColor}
         progressColor={progressColor}
+        minValue={minValue}
+        maxValue={maxValue}
       />
       <div
         style={{
@@ -64,7 +74,21 @@ function App() {
           alignItems: 'center',
           flexDirection: 'column'
         }}>
-        <div style={{ width: '300px' }}>
+        <div style={{ width: '300px', margin: '20px' }}>
+          <TextField
+            helperText="Min value"
+            id="demo-helper-text-misaligned"
+            label="Min value"
+            defaultValue={0}
+            onChange={changeMinValue}
+          />
+          <TextField
+            helperText="Max value"
+            id="demo-helper-text-misaligned"
+            label="Max value"
+            defaultValue={Math.PI * 2}
+            onChange={changeMaxValue}
+          />
           <Typography gutterBottom>Arc length</Typography>
           <Slider
             aria-label="Arc length"
