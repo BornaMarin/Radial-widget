@@ -51,13 +51,11 @@ export class RadialWidgetText implements IRadialWidgetText {
     const midValue = (this.maxValue - this.minValue) / 2;
     ctx.fillStyle = '#525252';
     ctx.font = 'bold 20px Arial';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
     ctx.fillText(this.minValue.toFixed(1), startingPoint.x, startingPoint.y);
     ctx.fillText(this.maxValue.toFixed(1), endPoint.x, endPoint.y);
     ctx.fillText(midValue.toFixed(1), middlePoint.x, middlePoint.y);
-
-    ctx.fillStyle = '#525252';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
     ctx.font = ' bold 42px Arial';
     ctx.fillText(scaledValue.toFixed(1), this.xAxisStartingPoint, this.yAxisStartingPoint);
   }

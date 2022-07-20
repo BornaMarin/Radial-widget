@@ -9,7 +9,7 @@ function App() {
 
   const [arcLength, setArcLength] = useState(Math.PI * 0.75);
   const [arcRadius, setArcRadius] = useState(100);
-  const [minValue, setMinValue] = useState(0);
+  const [minValue, setMinValue] = useState(-4);
   const [maxValue, setmaxValue] = useState(9);
   const [rotationFactor, setRotationFactor] = useState(0);
   const [arcValue, setArcValue] = useState(0);
@@ -25,10 +25,10 @@ function App() {
     setArcRadius(event.target.value);
   };
   const changeMinValue = (event: any) => {
-    setMinValue(event.target.value);
+    setMinValue(parseInt(event.target.value));
   };
   const changeMaxValue = (event: any) => {
-    setmaxValue(event.target.value);
+    setmaxValue(parseInt(event.target.value));
   };
   const rotateArc = (event: any) => {
     setRotationFactor(event.target.value);
