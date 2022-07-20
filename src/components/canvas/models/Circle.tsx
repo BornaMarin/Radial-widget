@@ -12,7 +12,11 @@ export default function CircleCanvas(props: ICircle) {
   }, [props.arcRadius]);
   return (
     <CanvasProvider drawable={circle}>
-      <Canvas zIndex={props.zIndex} />
+      <Canvas
+        zIndex={props.zIndex}
+        xAxisStartingPoint={props.xAxisStartingPoint}
+        yAxisStartingPoint={props.yAxisStartingPoint}
+      />
     </CanvasProvider>
   );
 }

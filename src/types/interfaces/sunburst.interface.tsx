@@ -3,4 +3,5 @@ export interface ISunburst {
   zIndex: number;
   xAxisStartingPoint: number;
   yAxisStartingPoint: number;
+  arcRadius: number;
 }

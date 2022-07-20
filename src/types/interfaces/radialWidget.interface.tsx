@@ -1,5 +1,6 @@
 export interface IRadialWidget {
   arcLength: number;
+  arcRadius: number;
   rotationFactor: number;
   value: number;
   bodyRadius: number;

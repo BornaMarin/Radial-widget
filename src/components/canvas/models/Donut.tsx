@@ -9,10 +9,14 @@ export default function DonutCanvas(props: IDonut) {
 
   useEffect(() => {
     setDonut(new Donut(props));
-  }, [props.startAngle, props.rotationFactor, props.endAngle, props.color]);
+  }, [props.startAngle, props.rotationFactor, props.endAngle, props.color, props.arcRadius]);
   return (
     <CanvasProvider drawable={donut}>
-      <Canvas zIndex={props.zIndex} />
+      <Canvas
+        zIndex={props.zIndex}
+        xAxisStartingPoint={props.xAxisStartingPoint}
+        yAxisStartingPoint={props.yAxisStartingPoint}
+      />
     </CanvasProvider>
   );
 }

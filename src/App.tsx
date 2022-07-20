@@ -4,7 +4,11 @@ import RadialWidget from './components/canvas/widgets/RadialWidget';
 import { Slider, Typography } from '@mui/material';
 import { TwitterPicker } from 'react-color';
 function App() {
+  //centar je jedini hardcoded.. prema njemu se canvas siri, smanjuje
+  const [center, setCenter] = useState(250);
+
   const [arcLength, setArcLength] = useState(Math.PI * 0.75);
+  const [arcRadius, setArcRadius] = useState(100);
   const [rotationFactor, setRotationFactor] = useState(0);
   const [arcValue, setArcValue] = useState(0);
   const [bodyRadius, setBodyRadius] = useState(50);
@@ -14,6 +18,9 @@ function App() {
 
   const changeArcLength = (event: any) => {
     setArcLength(event.target.value);
+  };
+  const changeArcRadius = (event: any) => {
+    setArcRadius(event.target.value);
   };
   const rotateArc = (event: any) => {
     setRotationFactor(event.target.value);
@@ -35,16 +42,18 @@ function App() {
     setProgressColor(event.hex);
   };
 
+  //napravljena je pretpostavka da je radial widget uvijek centriran.. sto znaci da je width = xStartingPoint * 2, povecavanjem ili smanjivanjem starting pointa mijenjamo canvas width, height.. malkoc nespretno..
   return (
     <div className="App">
       <RadialWidget
         bodyRadius={bodyRadius}
         arcLength={arcLength}
+        arcRadius={arcRadius}
         rotationFactor={rotationFactor}
         value={arcValue}
         sunburstRatio={sunburstRatio}
-        xAxisStartingPoint={250}
-        yAxisStartingPoint={250}
+        xAxisStartingPoint={center}
+        yAxisStartingPoint={center}
         defaultTickColor={defaultTickColor}
         progressColor={progressColor}
       />
@@ -65,6 +74,16 @@ function App() {
             defaultValue={Math.PI * 0.75}
             valueLabelDisplay="auto"
             onChange={changeArcLength}
+          />
+          <Typography gutterBottom>Arc radius</Typography>
+          <Slider
+            aria-label="Arc length"
+            step={1}
+            min={0}
+            max={center}
+            defaultValue={center}
+            valueLabelDisplay="auto"
+            onChange={changeArcRadius}
           />
           <Typography gutterBottom>Rotate Arc</Typography>
           <Slider
@@ -89,7 +108,7 @@ function App() {
           <Typography gutterBottom>Body circle radius</Typography>
           <Slider
             aria-label="Arc value"
-            max={90}
+            max={center}
             min={40}
             step={0.5}
             defaultValue={40}

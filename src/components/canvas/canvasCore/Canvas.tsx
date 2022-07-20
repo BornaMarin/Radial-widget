@@ -4,6 +4,8 @@ import CSS from 'csstype';
 
 interface CanvasProps {
   zIndex: number;
+  xAxisStartingPoint: number;
+  yAxisStartingPoint: number;
 }
 
 function Canvas(props: CanvasProps) {
@@ -23,7 +25,12 @@ function Canvas(props: CanvasProps) {
   };
   return (
     <>
-      <canvas width="500" height="500" style={canvasStyle} ref={canvasRef} />
+      <canvas
+        width={props.xAxisStartingPoint * 2}
+        height={props.yAxisStartingPoint * 2}
+        style={canvasStyle}
+        ref={canvasRef}
+      />
     </>
   );
 }

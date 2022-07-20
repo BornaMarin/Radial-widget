@@ -9,10 +9,14 @@ export default function SunburstCanvas(props: ISunburst) {
 
   useEffect(() => {
     setSunburst(new Sunburst(props));
-  }, [props.numberOfTicksRation]);
+  }, [props.numberOfTicksRation, props.arcRadius]);
   return (
     <CanvasProvider drawable={sunburst}>
-      <Canvas zIndex={props.zIndex} />
+      <Canvas
+        zIndex={props.zIndex}
+        xAxisStartingPoint={props.xAxisStartingPoint}
+        yAxisStartingPoint={props.yAxisStartingPoint}
+      />
     </CanvasProvider>
   );
 }
