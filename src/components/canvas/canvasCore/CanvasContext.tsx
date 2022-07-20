@@ -1,5 +1,5 @@
 import React, { useContext, useRef } from 'react';
-import { IDrawable } from '../../../types/drawable.interface';
+import { IDrawable } from '../../../types/interfaces/drawable.interface';
 
 interface ICanvasContext {
   canvasRef: React.RefObject<HTMLCanvasElement>;

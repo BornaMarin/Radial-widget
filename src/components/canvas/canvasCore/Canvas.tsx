@@ -2,16 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import { useCanvas } from './CanvasContext';
 import CSS from 'csstype';
 
-// interface CanvasStyle {
-//   zIndex: number;
-//   position: string;
-//   border: string;
-//   display: string;
-//   objectFit: string;
-//   width: string;
-//   height: string;
-// }
-
 interface CanvasProps {
   zIndex: number;
 }
