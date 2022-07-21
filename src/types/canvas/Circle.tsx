@@ -12,6 +12,7 @@ export class Circle extends BaseElement implements ICircle, IDrawable {
   }
   draw(ctx: CanvasRenderingContext2D): void {
     this.drawBaseCircle(ctx);
+    console.log(this.color);
     ctx.fillStyle = this.color;
     ctx.fill();
   }

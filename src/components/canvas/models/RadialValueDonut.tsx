@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { CanvasProvider } from '../canvasCore/CanvasContext';
 import Canvas from '../canvasCore/Canvas';
 import { IDrawableCanvasProvider } from '../../../types/interfaces/drawable.interface';
-import { IBidirection } from '../../../types/interfaces/bidirection.interface';
 import { RadialValueDonut } from '../../../types/canvas/RadialValueDonut';
+import { IDonutValues } from '../../../types/interfaces/donutValues.interface';
 
-export default function RadialValueDonutCanvas(props: IBidirection) {
+export default function RadialValueDonutCanvas(props: IDonutValues) {
   const [radialValueDonut, setRadialValueDonut] = useState(new RadialValueDonut(props));
   const ref = React.useRef<IDrawableCanvasProvider>();
   useEffect(() => {
     setRadialValueDonut(new RadialValueDonut(props));
     //todo check this.....
     setTimeout(() => ref?.current?.draw());
-  }, [props.value]);
+  }, [props.value, props.color]);
 
   return (
     <Canvas

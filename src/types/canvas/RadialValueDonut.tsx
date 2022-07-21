@@ -1,6 +1,6 @@
 import { Donut } from './Donut';
-import { IBidirection } from '../interfaces/bidirection.interface';
 import { calcRadialValue } from '../../utils/canvasHelper';
+import { IDonutValues } from '../interfaces/donutValues.interface';
 
 export class RadialValueDonut extends Donut {
   bidirection;
@@ -8,7 +8,7 @@ export class RadialValueDonut extends Donut {
   maxValue;
   minValue;
   arcLength;
-  constructor(props: IBidirection) {
+  constructor(props: IDonutValues) {
     super(props);
     this.bidirection = props.bidirection;
     this.value = props.value;

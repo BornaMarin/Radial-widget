@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { CanvasProvider } from '../canvasCore/CanvasContext';
 import Canvas from '../canvasCore/Canvas';
 
-import { IRadialWidgetText } from '../../../types/interfaces/radialWidgetText.interface';
+import { IDonutValues } from '../../../types/interfaces/donutValues.interface';
 import { RadialWidgetText } from '../../../types/canvas/RadialWidgetText';
 import { IDrawableCanvasProvider } from '../../../types/interfaces/drawable.interface';
 
-export default function RadialText(props: IRadialWidgetText) {
+export default function RadialText(props: IDonutValues) {
   const [circle, setCircle] = useState(new RadialWidgetText(props));
   const ref = React.useRef<IDrawableCanvasProvider>();
 

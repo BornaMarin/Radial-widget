@@ -1,7 +1,5 @@
-export interface ISunburst {
-  numberOfTicksRation: number;
-  zIndex: number;
-  xAxisStartingPoint: number;
-  yAxisStartingPoint: number;
-  arcRadius: number;
+import { ICircle } from './circle.interface';
+
+export interface ISunburst extends ICircle {
+  sunburstRatio: number;
 }

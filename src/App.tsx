@@ -35,7 +35,6 @@ function App() {
     setRotationFactor(event.target.value);
   };
   const handleBidirectionChange = (event: any) => {
-    console.log(event.target.checked);
     setBidirection(event.target.checked);
   };
   const changeValue = (event: any) => {
@@ -62,6 +61,8 @@ function App() {
         bodyRadius={bodyRadius}
         arcLength={arcLength}
         arcRadius={arcRadius}
+        startAngle={arcLength}
+        endAngle={Math.PI * 3 - arcLength}
         rotationFactor={rotationFactor}
         value={arcValue}
         sunburstRatio={sunburstRatio}
@@ -69,9 +70,11 @@ function App() {
         yAxisStartingPoint={center}
         defaultTickColor={defaultTickColor}
         progressColor={progressColor}
+        color={defaultTickColor}
         minValue={minValue}
         maxValue={maxValue}
         bidirection={bidirection}
+        zIndex={0}
       />
       {/*ovo ispod zanemariti....*/}
       <div

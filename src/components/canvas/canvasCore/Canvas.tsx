@@ -1,8 +1,8 @@
-import React, { forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
+import React, { forwardRef, useImperativeHandle, useRef } from 'react';
 import CSS from 'csstype';
 import { IDrawable } from '../../../types/interfaces/drawable.interface';
 
-interface CanvasProps {
+interface ICanvasProps {
   zIndex: number;
   xAxisStartingPoint: number;
   yAxisStartingPoint: number;
@@ -13,39 +13,22 @@ let canvas: HTMLCanvasElement | null = null;
 let context: CanvasRenderingContext2D | null = null;
 
 // eslint-disable-next-line react/display-name
-const Canvas = forwardRef((props: CanvasProps, ref) => {
+const Canvas = forwardRef((props: ICanvasProps, ref) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const prepareCanvas = () => {
     if (canvasRef.current) {
       canvas = canvasRef.current;
     }
-
     if (canvas) {
       context = canvas.getContext('2d');
     }
-
-    // const dpr = window.devicePixelRatio;
-
-    if (context) {
-      // context.scale(dpr, dpr);
-      context.lineCap = 'round';
-      context.strokeStyle = 'black';
-      context.lineWidth = 5;
-    }
   };
-
   const drawElement = () => {
     if (context) {
       props.drawable?.draw(context);
     }
   };
-  // useEffect(() => {
-  //   console.log('canvas bla');
-  //   prepareCanvas();
-  //   drawElement();
-  // }, []);
-
   useImperativeHandle(ref, () => ({
     draw() {
       prepareCanvas();

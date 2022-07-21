@@ -1,8 +1,8 @@
-import { IRadialWidgetText } from '../interfaces/radialWidgetText.interface';
+import { IDonutValues } from '../interfaces/donutValues.interface';
 import { lineToAngle } from '../../utils/canvasHelper';
 import { BaseElement } from './BaseElement';
 
-export class RadialWidgetText extends BaseElement implements IRadialWidgetText {
+export class RadialWidgetText extends BaseElement implements IDonutValues {
   arcRadius;
   value;
   minValue;
@@ -11,7 +11,9 @@ export class RadialWidgetText extends BaseElement implements IRadialWidgetText {
   endAngle;
   rotationFactor;
   bidirection;
-  constructor(props: IRadialWidgetText) {
+  color;
+  arcLength;
+  constructor(props: IDonutValues) {
     super(props);
     this.arcRadius = props.arcRadius;
     this.value = props.value;
@@ -21,12 +23,12 @@ export class RadialWidgetText extends BaseElement implements IRadialWidgetText {
     this.endAngle = props.endAngle;
     this.rotationFactor = props.rotationFactor;
     this.bidirection = props.bidirection;
+    this.color = props.color;
+    this.arcLength = props.arcLength;
   }
   draw(ctx: CanvasRenderingContext2D): void {
     this.clearCanvas(ctx);
     ctx.beginPath();
-    ctx.fillStyle = 'black';
-
     const startingPoint = lineToAngle(
       this.xAxisStartingPoint,
       this.yAxisStartingPoint,
@@ -51,9 +53,7 @@ export class RadialWidgetText extends BaseElement implements IRadialWidgetText {
     ctx.font = 'bold 20px Arial';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-
     ctx.fillText(this.minValue.toFixed(1), startingPoint.x, startingPoint.y);
-
     ctx.fillText(this.maxValue.toFixed(1), endPoint.x, endPoint.y);
     ctx.fillText(midValue.toFixed(1), middlePoint.x, middlePoint.y);
     ctx.font = ' bold 42px Arial';

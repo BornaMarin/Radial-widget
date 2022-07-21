@@ -1,4 +1,3 @@
-import { CanvasProvider } from '../canvasCore/CanvasContext';
 import Canvas from '../canvasCore/Canvas';
 import React, { useEffect, useState } from 'react';
 import { IDonut } from '../../../types/interfaces/donut.interface';
