@@ -57,7 +57,7 @@ function App() {
   //napravljena je pretpostavka da je radial widget uvijek centriran.. sto znaci da je width = xStartingPoint * 2, povecavanjem ili smanjivanjem starting pointa mijenjamo canvas width, height.. malkoc nespretno..
   return (
     <div className="App">
-      {/*Pravi use case je da sa parent pageu postoji samo componenta Radial Widget te spojen neki data flow na value prop, sve ostalo sto vidimo  je samo 'Storybook' kako biste vi mogli testirati opcije Radial Widgeta*/}
+      {/*Pravi use case je da na parent pageu postoji samo componenta Radial Widget te spojen neki data flow na value prop, sve ostalo sto vidimo  je samo 'Storybook' kako biste vi mogli testirati opcije Radial Widgeta*/}
       <RadialWidget
         bodyRadius={bodyRadius}
         arcLength={arcLength}
@@ -73,14 +73,13 @@ function App() {
         maxValue={maxValue}
         bidirection={bidirection}
       />
+      {/*ovo ispod zanemariti....*/}
       <div
         style={{
-          width: '500px',
-          display: 'flex',
-          alignItems: 'center',
-          flexDirection: 'column'
+          width: '600px',
+          display: 'flex'
         }}>
-        <div style={{ width: '300px', margin: '20px' }}>
+        <div style={{ width: '250px', padding: '20px' }}>
           <TextField
             helperText="Min value"
             id="demo-helper-text-misaligned"
@@ -137,15 +136,8 @@ function App() {
             valueLabelDisplay="auto"
             onChange={changeValue}
           />
-          <Slider
-            aria-label="Arc value"
-            max={Math.PI * 2 + Math.PI - arcLength}
-            min={arcLength}
-            step={0.1}
-            defaultValue={0}
-            valueLabelDisplay="auto"
-            onChange={changeValue}
-          />
+        </div>
+        <div style={{ width: '250px', padding: '20px' }}>
           <Typography gutterBottom>Body circle radius</Typography>
           <Slider
             aria-label="Arc value"
