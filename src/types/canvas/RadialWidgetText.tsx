@@ -34,19 +34,19 @@ export class RadialWidgetText implements IRadialWidgetText {
     const startingPoint = lineToAngle(
       this.xAxisStartingPoint,
       this.yAxisStartingPoint,
-      this.arcRadius + 20,
+      this.arcRadius + 30,
       this.startAngle + this.rotationFactor
     );
     const endPoint = lineToAngle(
       this.xAxisStartingPoint,
       this.yAxisStartingPoint,
-      this.arcRadius + 20,
+      this.arcRadius + 30,
       this.endAngle + this.rotationFactor
     );
     const middlePoint = lineToAngle(
       this.xAxisStartingPoint,
       this.yAxisStartingPoint,
-      this.arcRadius + 20,
+      this.arcRadius + 25,
       (this.endAngle + this.startAngle + this.rotationFactor * 2) / 2
     );
     let midValue = 0;
@@ -55,6 +55,7 @@ export class RadialWidgetText implements IRadialWidgetText {
     ctx.font = 'bold 20px Arial';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
+
     ctx.fillText(this.minValue.toFixed(1), startingPoint.x, startingPoint.y);
 
     ctx.fillText(this.maxValue.toFixed(1), endPoint.x, endPoint.y);
