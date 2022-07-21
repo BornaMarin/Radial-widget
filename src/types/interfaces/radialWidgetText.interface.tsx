@@ -9,4 +9,5 @@ export interface IRadialWidgetText {
   startAngle: number;
   endAngle: number;
   rotationFactor: number;
+  bidirection: boolean;
 }

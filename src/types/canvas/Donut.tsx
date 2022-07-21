@@ -16,7 +16,7 @@ export class Donut extends Circle implements IDonut, IDrawable {
     this.drawBaseCircle(ctx);
     this.fillGap(ctx);
   }
-  private fillGap(ctx: CanvasRenderingContext2D): void {
+  protected fillGap(ctx: CanvasRenderingContext2D): void {
     ctx.beginPath();
     ctx.moveTo(this.xAxisStartingPoint, this.yAxisStartingPoint);
     ctx.arc(
