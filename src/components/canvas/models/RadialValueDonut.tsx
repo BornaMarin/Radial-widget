@@ -15,13 +15,12 @@ export default function RadialValueDonutCanvas(props: IBidirection) {
   }, [props.value]);
 
   return (
-    <CanvasProvider drawable={radialValueDonut}>
-      <Canvas
-        ref={ref}
-        zIndex={props.zIndex}
-        xAxisStartingPoint={props.xAxisStartingPoint}
-        yAxisStartingPoint={props.yAxisStartingPoint}
-      />
-    </CanvasProvider>
+    <Canvas
+      drawable={radialValueDonut}
+      ref={ref}
+      zIndex={props.zIndex}
+      xAxisStartingPoint={props.xAxisStartingPoint}
+      yAxisStartingPoint={props.yAxisStartingPoint}
+    />
   );
 }

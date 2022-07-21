@@ -9,7 +9,7 @@ function App() {
 
   const [arcLength, setArcLength] = useState(Math.PI * 0.75);
   const [arcRadius, setArcRadius] = useState(100);
-  const [minValue, setMinValue] = useState(-9);
+  const [minValue, setMinValue] = useState(-4);
   const [maxValue, setmaxValue] = useState(9);
   const [rotationFactor, setRotationFactor] = useState(0);
   const [arcValue, setArcValue] = useState(0);
@@ -57,6 +57,7 @@ function App() {
   //napravljena je pretpostavka da je radial widget uvijek centriran.. sto znaci da je width = xStartingPoint * 2, povecavanjem ili smanjivanjem starting pointa mijenjamo canvas width, height.. malkoc nespretno..
   return (
     <div className="App">
+      {/*Pravi use case je da sa parent pageu postoji samo componenta Radial Widget te spojen neki data flow na value prop, sve ostalo sto vidimo  je samo 'Storybook' kako biste vi mogli testirati opcije Radial Widgeta*/}
       <RadialWidget
         bodyRadius={bodyRadius}
         arcLength={arcLength}

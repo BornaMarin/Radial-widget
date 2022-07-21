@@ -1,3 +1,6 @@
+//Depreceted.....
+//First logic for canvas provider
+
 import React, { useContext, useRef } from 'react';
 import { IDrawable } from '../../../types/interfaces/drawable.interface';
 

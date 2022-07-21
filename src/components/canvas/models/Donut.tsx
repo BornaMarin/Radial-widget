@@ -15,13 +15,12 @@ export default function DonutCanvas(props: IDonut) {
     setTimeout(() => ref?.current?.draw());
   }, [props.startAngle, props.rotationFactor, props.endAngle, props.color, props.arcRadius]);
   return (
-    <CanvasProvider drawable={donut}>
-      <Canvas
-        ref={ref}
-        zIndex={props.zIndex}
-        xAxisStartingPoint={props.xAxisStartingPoint}
-        yAxisStartingPoint={props.yAxisStartingPoint}
-      />
-    </CanvasProvider>
+    <Canvas
+      drawable={donut}
+      ref={ref}
+      zIndex={props.zIndex}
+      xAxisStartingPoint={props.xAxisStartingPoint}
+      yAxisStartingPoint={props.yAxisStartingPoint}
+    />
   );
 }

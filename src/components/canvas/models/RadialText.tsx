@@ -16,13 +16,12 @@ export default function RadialText(props: IRadialWidgetText) {
     setTimeout(() => ref?.current?.draw());
   }, [props]);
   return (
-    <CanvasProvider drawable={circle}>
-      <Canvas
-        ref={ref}
-        zIndex={props.zIndex}
-        xAxisStartingPoint={props.xAxisStartingPoint}
-        yAxisStartingPoint={props.yAxisStartingPoint}
-      />
-    </CanvasProvider>
+    <Canvas
+      drawable={circle}
+      ref={ref}
+      zIndex={props.zIndex}
+      xAxisStartingPoint={props.xAxisStartingPoint}
+      yAxisStartingPoint={props.yAxisStartingPoint}
+    />
   );
 }

@@ -15,13 +15,12 @@ export default function SunburstCanvas(props: ISunburst) {
     setTimeout(() => ref?.current?.draw());
   }, [props.numberOfTicksRation, props.arcRadius]);
   return (
-    <CanvasProvider drawable={sunburst}>
-      <Canvas
-        ref={ref}
-        zIndex={props.zIndex}
-        xAxisStartingPoint={props.xAxisStartingPoint}
-        yAxisStartingPoint={props.yAxisStartingPoint}
-      />
-    </CanvasProvider>
+    <Canvas
+      drawable={sunburst}
+      ref={ref}
+      zIndex={props.zIndex}
+      xAxisStartingPoint={props.xAxisStartingPoint}
+      yAxisStartingPoint={props.yAxisStartingPoint}
+    />
   );
 }
