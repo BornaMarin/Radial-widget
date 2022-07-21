@@ -12,7 +12,7 @@ export default function RadialValueDonutCanvas(props: IBidirection) {
     setRadialValueDonut(new RadialValueDonut(props));
     //todo check this.....
     setTimeout(() => ref?.current?.draw());
-  }, [props]);
+  }, [props.value]);
 
   return (
     <CanvasProvider drawable={radialValueDonut}>
