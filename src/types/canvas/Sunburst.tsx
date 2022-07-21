@@ -12,7 +12,7 @@ export class Sunburst extends BaseElement implements ISunburst, IDrawable {
     this.arcRadius = props.arcRadius;
   }
   draw(ctx: CanvasRenderingContext2D): void {
-    ctx.clearRect(0, 0, this.xAxisStartingPoint * 2, this.xAxisStartingPoint * 2);
+    this.clearCanvas(ctx);
     ctx.fillStyle = 'white';
 
     let prev = null;

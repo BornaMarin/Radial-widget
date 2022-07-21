@@ -16,7 +16,7 @@ export class Circle extends BaseElement implements ICircle, IDrawable {
     ctx.fill();
   }
   protected drawBaseCircle(ctx: CanvasRenderingContext2D): void {
-    ctx.clearRect(0, 0, this.xAxisStartingPoint * 2, this.xAxisStartingPoint * 2);
+    this.clearCanvas(ctx);
     ctx.beginPath();
     ctx.arc(this.xAxisStartingPoint, this.yAxisStartingPoint, this.arcRadius, 0, Math.PI * 2);
   }

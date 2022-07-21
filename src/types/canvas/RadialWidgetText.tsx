@@ -23,7 +23,7 @@ export class RadialWidgetText extends BaseElement implements IRadialWidgetText {
     this.bidirection = props.bidirection;
   }
   draw(ctx: CanvasRenderingContext2D): void {
-    ctx.clearRect(0, 0, this.xAxisStartingPoint * 2, this.xAxisStartingPoint * 2);
+    this.clearCanvas(ctx);
     ctx.beginPath();
     ctx.fillStyle = 'black';
 

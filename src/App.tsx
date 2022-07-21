@@ -97,7 +97,9 @@ function App() {
           />
           <hr />
 
-          <Typography gutterBottom>Arc length</Typography>
+          <Typography style={{ fontWeight: 600 }} gutterBottom>
+            Arc length
+          </Typography>
           <Slider
             aria-label="Arc length"
             max={Math.PI}
@@ -109,7 +111,9 @@ function App() {
           />
           <hr />
 
-          <Typography gutterBottom>Arc radius</Typography>
+          <Typography style={{ fontWeight: 600 }} gutterBottom>
+            Arc radius
+          </Typography>
           <Slider
             aria-label="Arc length"
             step={1}
@@ -121,7 +125,9 @@ function App() {
           />
           <hr />
 
-          <Typography gutterBottom>Rotate Arc</Typography>
+          <Typography style={{ fontWeight: 600 }} gutterBottom>
+            Rotate Arc
+          </Typography>
           <Slider
             aria-label="Arc rotate"
             max={Math.PI * 2}
@@ -133,11 +139,15 @@ function App() {
           />
           <hr />
 
-          <Typography gutterBottom>Is bidirectional</Typography>
+          <Typography style={{ fontWeight: 600 }} gutterBottom>
+            Is bidirectional
+          </Typography>
           <Checkbox onChange={handleBidirectionChange} />
           <hr />
 
-          <Typography gutterBottom>Radial value</Typography>
+          <Typography style={{ fontWeight: 600 }} gutterBottom>
+            Radial value
+          </Typography>
           <Slider
             aria-label="Arc value"
             max={maxValue}
@@ -149,7 +159,9 @@ function App() {
           />
         </div>
         <div style={{ width: '250px', padding: '20px' }}>
-          <Typography gutterBottom>Body circle radius</Typography>
+          <Typography style={{ fontWeight: 600 }} gutterBottom>
+            Body circle radius
+          </Typography>
           <Slider
             aria-label="Arc value"
             max={center}
@@ -160,7 +172,9 @@ function App() {
             onChange={changeBodyRadius}
           />
           <hr />
-          <Typography gutterBottom>Sunburst ratio</Typography>
+          <Typography style={{ fontWeight: 600 }} gutterBottom>
+            Sunburst ratio
+          </Typography>
           <Slider
             aria-label="Sunburst ratio"
             max={180}
@@ -171,10 +185,14 @@ function App() {
             onChange={changeSunburstRatio}
           />
           <hr />
-          <Typography gutterBottom>Default tick color</Typography>
+          <Typography style={{ fontWeight: 600 }} gutterBottom>
+            Default tick color
+          </Typography>
           <TwitterPicker color={defaultTickColor} onChange={changeDefaultTickColor} />
           <hr />
-          <Typography gutterBottom>Progress color</Typography>
+          <Typography style={{ fontWeight: 600 }} gutterBottom>
+            Progress color
+          </Typography>
           <TwitterPicker color={progressColor} onChange={changeProgressColor} />
         </div>
       </div>

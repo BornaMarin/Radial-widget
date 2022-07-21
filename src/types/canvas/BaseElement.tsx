@@ -10,4 +10,7 @@ export abstract class BaseElement implements IBaseElement {
     this.xAxisStartingPoint = props.xAxisStartingPoint;
     this.yAxisStartingPoint = props.yAxisStartingPoint;
   }
+  protected clearCanvas(ctx: CanvasRenderingContext2D): void {
+    ctx.clearRect(0, 0, this.xAxisStartingPoint * 2, this.xAxisStartingPoint * 2);
+  }
 }
