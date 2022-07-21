@@ -11,4 +11,5 @@ export interface IRadialWidget {
   progressColor: string;
   minValue: number;
   maxValue: number;
+  bidirection: boolean;
 }

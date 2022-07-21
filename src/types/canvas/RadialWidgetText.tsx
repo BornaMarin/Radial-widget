@@ -25,7 +25,6 @@ export class RadialWidgetText implements IRadialWidgetText {
     this.rotationFactor = props.rotationFactor;
   }
   draw(ctx: CanvasRenderingContext2D): void {
-    const scaledValue = this.calcValue();
     ctx.clearRect(0, 0, this.xAxisStartingPoint * 2, this.xAxisStartingPoint * 2);
     ctx.beginPath();
     ctx.fillStyle = 'black';
@@ -57,14 +56,6 @@ export class RadialWidgetText implements IRadialWidgetText {
     ctx.fillText(this.maxValue.toFixed(1), endPoint.x, endPoint.y);
     ctx.fillText(midValue.toFixed(1), middlePoint.x, middlePoint.y);
     ctx.font = ' bold 42px Arial';
-    ctx.fillText(scaledValue.toFixed(1), this.xAxisStartingPoint, this.yAxisStartingPoint);
-  }
-  calcValue(): number {
-    console.log(this.startAngle);
-    const angleScale = this.endAngle - this.startAngle;
-    const valueScale = this.maxValue - this.minValue;
-    const valueRatio = valueScale / angleScale;
-    //oduzimanje u zagradi postavi scalu na start angel, jer donut nije puna kruznica
-    return valueRatio * (this.value - this.startAngle) + this.minValue;
+    ctx.fillText(this.value.toFixed(1), this.xAxisStartingPoint, this.yAxisStartingPoint);
   }
 }

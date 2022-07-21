@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import RadialWidget from './components/canvas/widgets/RadialWidget';
-import { Slider, Typography, TextField } from '@mui/material';
+import { Slider, Typography, TextField, Checkbox } from '@mui/material';
 import { TwitterPicker } from 'react-color';
 function App() {
   //centar je jedini hardcoded.. prema njemu se canvas siri, smanjuje
@@ -9,10 +9,11 @@ function App() {
 
   const [arcLength, setArcLength] = useState(Math.PI * 0.75);
   const [arcRadius, setArcRadius] = useState(100);
-  const [minValue, setMinValue] = useState(-4);
+  const [minValue, setMinValue] = useState(-9);
   const [maxValue, setmaxValue] = useState(9);
   const [rotationFactor, setRotationFactor] = useState(0);
   const [arcValue, setArcValue] = useState(0);
+  const [bidirection, setBidirection] = useState(false);
   const [bodyRadius, setBodyRadius] = useState(50);
   const [sunburstRatio, setSunburstRatio] = useState(40);
   const [defaultTickColor, setDefaultTickColor] = useState('#ABB8C3');
@@ -32,6 +33,10 @@ function App() {
   };
   const rotateArc = (event: any) => {
     setRotationFactor(event.target.value);
+  };
+  const handleBidirectionChange = (event: any) => {
+    console.log(event.target.checked);
+    setBidirection(event.target.checked);
   };
   const changeValue = (event: any) => {
     setArcValue(event.target.value);
@@ -65,6 +70,7 @@ function App() {
         progressColor={progressColor}
         minValue={minValue}
         maxValue={maxValue}
+        bidirection={bidirection}
       />
       <div
         style={{
@@ -78,14 +84,14 @@ function App() {
             helperText="Min value"
             id="demo-helper-text-misaligned"
             label="Min value"
-            defaultValue={0}
+            defaultValue={-4}
             onChange={changeMinValue}
           />
           <TextField
             helperText="Max value"
             id="demo-helper-text-misaligned"
             label="Max value"
-            defaultValue={Math.PI * 2}
+            defaultValue={9}
             onChange={changeMaxValue}
           />
           <Typography gutterBottom>Arc length</Typography>
@@ -118,7 +124,18 @@ function App() {
             valueLabelDisplay="auto"
             onChange={rotateArc}
           />
+          <Typography gutterBottom>Is bidirectional</Typography>
+          <Checkbox onChange={handleBidirectionChange} />
           <Typography gutterBottom>Radial value</Typography>
+          <Slider
+            aria-label="Arc value"
+            max={maxValue}
+            min={minValue}
+            step={0.1}
+            defaultValue={0}
+            valueLabelDisplay="auto"
+            onChange={changeValue}
+          />
           <Slider
             aria-label="Arc value"
             max={Math.PI * 2 + Math.PI - arcLength}
