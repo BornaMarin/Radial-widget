@@ -87,6 +87,7 @@ function App() {
             defaultValue={-4}
             onChange={changeMinValue}
           />
+          <hr />
           <TextField
             helperText="Max value"
             id="demo-helper-text-misaligned"
@@ -94,6 +95,8 @@ function App() {
             defaultValue={9}
             onChange={changeMaxValue}
           />
+          <hr />
+
           <Typography gutterBottom>Arc length</Typography>
           <Slider
             aria-label="Arc length"
@@ -104,6 +107,8 @@ function App() {
             valueLabelDisplay="auto"
             onChange={changeArcLength}
           />
+          <hr />
+
           <Typography gutterBottom>Arc radius</Typography>
           <Slider
             aria-label="Arc length"
@@ -114,6 +119,8 @@ function App() {
             valueLabelDisplay="auto"
             onChange={changeArcRadius}
           />
+          <hr />
+
           <Typography gutterBottom>Rotate Arc</Typography>
           <Slider
             aria-label="Arc rotate"
@@ -124,8 +131,12 @@ function App() {
             valueLabelDisplay="auto"
             onChange={rotateArc}
           />
+          <hr />
+
           <Typography gutterBottom>Is bidirectional</Typography>
           <Checkbox onChange={handleBidirectionChange} />
+          <hr />
+
           <Typography gutterBottom>Radial value</Typography>
           <Slider
             aria-label="Arc value"
@@ -148,6 +159,7 @@ function App() {
             valueLabelDisplay="auto"
             onChange={changeBodyRadius}
           />
+          <hr />
           <Typography gutterBottom>Sunburst ratio</Typography>
           <Slider
             aria-label="Sunburst ratio"
@@ -158,8 +170,10 @@ function App() {
             valueLabelDisplay="auto"
             onChange={changeSunburstRatio}
           />
+          <hr />
           <Typography gutterBottom>Default tick color</Typography>
           <TwitterPicker color={defaultTickColor} onChange={changeDefaultTickColor} />
+          <hr />
           <Typography gutterBottom>Progress color</Typography>
           <TwitterPicker color={progressColor} onChange={changeProgressColor} />
         </div>

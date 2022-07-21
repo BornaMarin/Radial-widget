@@ -1,11 +1,9 @@
 import { IRadialWidgetText } from '../interfaces/radialWidgetText.interface';
 import { lineToAngle } from '../../utils/canvasHelper';
+import { BaseElement } from './BaseElement';
 
-export class RadialWidgetText implements IRadialWidgetText {
+export class RadialWidgetText extends BaseElement implements IRadialWidgetText {
   arcRadius;
-  zIndex;
-  xAxisStartingPoint;
-  yAxisStartingPoint;
   value;
   minValue;
   maxValue;
@@ -14,10 +12,8 @@ export class RadialWidgetText implements IRadialWidgetText {
   rotationFactor;
   bidirection;
   constructor(props: IRadialWidgetText) {
+    super(props);
     this.arcRadius = props.arcRadius;
-    this.zIndex = props.zIndex;
-    this.xAxisStartingPoint = props.xAxisStartingPoint;
-    this.yAxisStartingPoint = props.yAxisStartingPoint;
     this.value = props.value;
     this.minValue = props.minValue;
     this.maxValue = props.maxValue;
