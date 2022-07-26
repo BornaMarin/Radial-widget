@@ -1,4 +1,4 @@
-import React, { forwardRef, useImperativeHandle, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import CSS from 'csstype';
 import { IDrawable } from '../../../types/interfaces/drawable.interface';
 
@@ -12,8 +12,7 @@ interface ICanvasProps {
 let canvas: HTMLCanvasElement | null = null;
 let context: CanvasRenderingContext2D | null = null;
 
-// eslint-disable-next-line react/display-name
-const Canvas = forwardRef((props: ICanvasProps, ref) => {
+const Canvas = (props: ICanvasProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const prepareCanvas = () => {
@@ -24,17 +23,17 @@ const Canvas = forwardRef((props: ICanvasProps, ref) => {
       context = canvas.getContext('2d');
     }
   };
-  const drawElement = () => {
+
+  useEffect(() => {
+    prepareCanvas();
+  }, []);
+
+  useEffect(() => {
     if (context) {
+      prepareCanvas();
       props.drawable?.draw(context);
     }
-  };
-  useImperativeHandle(ref, () => ({
-    draw() {
-      prepareCanvas();
-      drawElement();
-    }
-  }));
+  }, [props.drawable]);
 
   const canvasStyle: CSS.Properties = {
     zIndex: props.zIndex,
@@ -53,5 +52,5 @@ const Canvas = forwardRef((props: ICanvasProps, ref) => {
       />
     </>
   );
-});
+};
 export default Canvas;
