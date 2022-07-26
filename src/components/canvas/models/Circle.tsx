@@ -9,9 +9,11 @@ export default function CircleCanvas(props: ICircle) {
   const ref = React.useRef<IDrawableCanvasProvider>();
   useEffect(() => {
     setCircle(new Circle(props));
-    //todo check this.....
-    setTimeout(() => ref?.current?.draw());
   }, [props.arcRadius]);
+
+  useEffect(() => {
+    ref?.current?.draw();
+  }, [circle]);
 
   return (
     <Canvas

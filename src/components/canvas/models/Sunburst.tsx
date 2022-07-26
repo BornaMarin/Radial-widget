@@ -10,9 +10,10 @@ export default function SunburstCanvas(props: ISunburst) {
 
   useEffect(() => {
     setSunburst(new Sunburst(props));
-    //todo check this.....
-    setTimeout(() => ref?.current?.draw());
   }, [props.sunburstRatio, props.arcRadius]);
+  useEffect(() => {
+    ref?.current?.draw();
+  }, [sunburst]);
   return (
     <Canvas
       drawable={sunburst}

@@ -11,9 +11,10 @@ export default function RadialText(props: IDonutValues) {
 
   useEffect(() => {
     setRadialText(new RadialWidgetText(props));
-    //todo check this.....
-    setTimeout(() => ref?.current?.draw());
   }, [props]);
+  useEffect(() => {
+    ref?.current?.draw();
+  }, [radialText]);
   return (
     <Canvas
       drawable={radialText}

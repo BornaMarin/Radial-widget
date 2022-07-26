@@ -9,10 +9,10 @@ export default function RadialValueDonutCanvas(props: IDonutValues) {
   const ref = React.useRef<IDrawableCanvasProvider>();
   useEffect(() => {
     setRadialValueDonut(new RadialValueDonut(props));
-    //todo check this.....
-    setTimeout(() => ref?.current?.draw());
   }, [props.value, props.color]);
-
+  useEffect(() => {
+    ref?.current?.draw();
+  }, [radialValueDonut]);
   return (
     <Canvas
       drawable={radialValueDonut}

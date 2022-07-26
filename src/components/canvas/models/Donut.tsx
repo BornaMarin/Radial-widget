@@ -10,9 +10,10 @@ export default function DonutCanvas(props: IDonut) {
 
   useEffect(() => {
     setDonut(new Donut(props));
-    //todo check this.....
-    setTimeout(() => ref?.current?.draw());
   }, [props.startAngle, props.rotationFactor, props.endAngle, props.color, props.arcRadius]);
+  useEffect(() => {
+    ref?.current?.draw();
+  }, [donut]);
   return (
     <Canvas
       drawable={donut}
