@@ -1,6 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import CSS from 'csstype';
 import { IDrawable } from '../../../types/interfaces/drawable.interface';
+import { Sunburst } from '../../../types/canvas/Sunburst';
 
 interface ICanvasProps {
   zIndex: number;
@@ -9,18 +10,18 @@ interface ICanvasProps {
   drawable: IDrawable;
 }
 
-let canvas: HTMLCanvasElement | null = null;
-let context: CanvasRenderingContext2D | null = null;
-
 const Canvas = (props: ICanvasProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  let canvas: HTMLCanvasElement | null = null;
+  // let context: CanvasRenderingContext2D | null = null;
+  const [context, setContext] = useState<CanvasRenderingContext2D | null>(null);
 
   const prepareCanvas = () => {
     if (canvasRef.current) {
       canvas = canvasRef.current;
     }
     if (canvas) {
-      context = canvas.getContext('2d');
+      setContext(canvas.getContext('2d'));
     }
   };
 
@@ -30,7 +31,6 @@ const Canvas = (props: ICanvasProps) => {
 
   useEffect(() => {
     if (context) {
-      prepareCanvas();
       props.drawable?.draw(context);
     }
   }, [props.drawable]);
