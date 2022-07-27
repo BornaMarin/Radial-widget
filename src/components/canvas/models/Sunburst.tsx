@@ -4,6 +4,7 @@ import { ISunburst } from '../../../types/interfaces/sunburst.interface';
 import { Sunburst } from '../../../types/canvas/Sunburst';
 
 const SunburstCanvas = (props: ISunburst) => {
+  console.log('sunburst');
   const [context, setContext] = useState<CanvasRenderingContext2D | null>(null);
   useEffect(() => {
     if (context) {

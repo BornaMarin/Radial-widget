@@ -4,6 +4,8 @@ import { IDonutValues } from '../../../types/interfaces/donutValues.interface';
 import { RadialWidgetText } from '../../../types/canvas/RadialWidgetText';
 
 const RadialText = (props: IDonutValues) => {
+  console.log('Radial text');
+
   const [context, setContext] = useState<CanvasRenderingContext2D | null>(null);
   useEffect(() => {
     if (context) {

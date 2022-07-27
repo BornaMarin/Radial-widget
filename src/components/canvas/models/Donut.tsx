@@ -4,6 +4,8 @@ import { IDonut } from '../../../types/interfaces/donut.interface';
 import { Donut } from '../../../types/canvas/Donut';
 
 const DonutCanvas = (props: IDonut) => {
+  console.log('donut');
+
   const [context, setContext] = useState<CanvasRenderingContext2D | null>(null);
   useEffect(() => {
     if (context) {

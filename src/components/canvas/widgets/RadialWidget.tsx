@@ -9,6 +9,7 @@ import { IDonutValues } from '../../../types/interfaces/donutValues.interface';
 import { ISunburst } from '../../../types/interfaces/sunburst.interface';
 
 function RadialWidget(props: IDonutValues & IRadialWidget & ISunburst) {
+  console.log('Widget');
   return (
     <>
       <div

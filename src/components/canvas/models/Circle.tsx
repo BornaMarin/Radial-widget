@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Canvas from '../canvasCore/Canvas';
 import { ICircle } from '../../../types/interfaces/circle.interface';
 import { Circle } from '../../../types/canvas/Circle';
 
 const CircleCanvas = (props: ICircle) => {
-  console.log('aaaaaaa', props);
+  console.log('circle');
   const [context, setContext] = useState<CanvasRenderingContext2D | null>(null);
   useEffect(() => {
     if (context) {
