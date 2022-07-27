@@ -1,39 +1,32 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { SetStateAction, useEffect, useRef } from 'react';
 import CSS from 'csstype';
 import { IDrawable } from '../../../types/interfaces/drawable.interface';
-import { Sunburst } from '../../../types/canvas/Sunburst';
 
 interface ICanvasProps {
   zIndex: number;
   xAxisStartingPoint: number;
   yAxisStartingPoint: number;
-  drawable: IDrawable;
+  setContext: React.Dispatch<React.SetStateAction<any>>;
 }
 
+// Keep in mind that premature optimization is the root of all evil :)
 const Canvas = (props: ICanvasProps) => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  let canvas: HTMLCanvasElement | null = null;
-  // let context: CanvasRenderingContext2D | null = null;
-  const [context, setContext] = useState<CanvasRenderingContext2D | null>(null);
-
-  const prepareCanvas = () => {
-    if (canvasRef.current) {
-      canvas = canvasRef.current;
-    }
-    if (canvas) {
-      setContext(canvas.getContext('2d'));
-    }
-  };
-
+  console.log('canvas', props);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  // useEffect(() => {
+  //   if (canvasRef && canvasRef.current && canvasRef.current.getContext('2d')) {
+  //     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  //     // @ts-ignore
+  //     props.drawable?.draw(canvasRef.current.getContext('2d'));
+  //   }
+  // }, [props.drawable]);
   useEffect(() => {
-    prepareCanvas();
+    if (canvasRef && canvasRef.current && canvasRef.current.getContext('2d')) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      props.setContext(canvasRef.current.getContext('2d'));
+    }
   }, []);
-
-  useEffect(() => {
-    if (context) {
-      props.drawable?.draw(context);
-    }
-  }, [props.drawable]);
 
   const canvasStyle: CSS.Properties = {
     zIndex: props.zIndex,
@@ -53,4 +46,4 @@ const Canvas = (props: ICanvasProps) => {
     </>
   );
 };
-export default Canvas;
+export default React.memo(Canvas);

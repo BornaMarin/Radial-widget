@@ -2,19 +2,25 @@ import React, { useEffect, useState } from 'react';
 import Canvas from '../canvasCore/Canvas';
 import { RadialValueDonut } from '../../../types/canvas/RadialValueDonut';
 import { IDonutValues } from '../../../types/interfaces/donutValues.interface';
+import RadialText from './RadialText';
 
-export default function RadialValueDonutCanvas(props: IDonutValues) {
-  const [radialValueDonut, setRadialValueDonut] = useState(new RadialValueDonut(props));
+const RadialValueDonutCanvas = (props: IDonutValues) => {
+  const [context, setContext] = useState<CanvasRenderingContext2D | null>(null);
   useEffect(() => {
-    setRadialValueDonut(new RadialValueDonut(props));
-  }, [props.value, props.color]);
+    if (context) {
+      const circle = new RadialValueDonut(props);
+      circle.draw(context);
+    }
+  }, [props.value, props.color, context]);
 
   return (
     <Canvas
-      drawable={radialValueDonut}
+      setContext={setContext}
       zIndex={props.zIndex}
       xAxisStartingPoint={props.xAxisStartingPoint}
       yAxisStartingPoint={props.yAxisStartingPoint}
     />
   );
-}
+};
+
+export default React.memo(RadialValueDonutCanvas);

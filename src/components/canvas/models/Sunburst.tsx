@@ -3,19 +3,22 @@ import Canvas from '../canvasCore/Canvas';
 import { ISunburst } from '../../../types/interfaces/sunburst.interface';
 import { Sunburst } from '../../../types/canvas/Sunburst';
 
-export default function SunburstCanvas(props: ISunburst) {
-  const [sunburst, setSunburst] = useState(new Sunburst(props));
-
+const SunburstCanvas = (props: ISunburst) => {
+  const [context, setContext] = useState<CanvasRenderingContext2D | null>(null);
   useEffect(() => {
-    setSunburst(new Sunburst(props));
-  }, [props.sunburstRatio, props.arcRadius]);
+    if (context) {
+      const circle = new Sunburst(props);
+      circle.draw(context);
+    }
+  }, [props.sunburstRatio, props.arcRadius, context]);
 
   return (
     <Canvas
-      drawable={sunburst}
+      setContext={setContext}
       zIndex={props.zIndex}
       xAxisStartingPoint={props.xAxisStartingPoint}
       yAxisStartingPoint={props.yAxisStartingPoint}
     />
   );
-}
+};
+export default React.memo(SunburstCanvas);
